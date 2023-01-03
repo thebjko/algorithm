@@ -1,0 +1,7 @@
+num_1 = input()
+num_2 = input()
+num_1 = int(num_1)
+print(num_1 * int(num_2[-1]))
+print(num_1 * int(num_2[-2]))
+print(num_1 * int(num_2[-3]))
+print(num_1 * int(num_2))
