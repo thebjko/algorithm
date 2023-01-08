@@ -18,3 +18,10 @@ while (num := num):
     if num[-1] == num[0]:
         print(len(num)-1)
         break
+
+"""
+숏코딩
+a=n=int(input());c=1
+while(a:=a%10*10+a*11//10%10)-n:c+=1
+print(c)
+"""
