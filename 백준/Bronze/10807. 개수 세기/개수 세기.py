@@ -6,3 +6,10 @@ for i in ls[1:-1]:
         n += 1
 
 print(n)
+
+"""
+숏코딩
+i = input
+i()
+print(i().split().count(i()))
+"""
