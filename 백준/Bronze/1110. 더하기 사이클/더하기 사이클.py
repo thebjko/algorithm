@@ -11,7 +11,7 @@ for index, n in enumerate(num := num):
     num.append(e)
     
     if num[-1] == num[0]:
-        print(len(num)-1)
+        print(index+1)
         break
 
 """
