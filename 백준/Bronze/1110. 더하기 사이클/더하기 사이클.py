@@ -3,15 +3,12 @@ num = [open(0).read().strip()]
 if len(num[0]) == 1:
     num[0] = '0' + num[0]
 
-for i, _ in enumerate(num := num):
-    n = num[i]
-    
+for index, n in enumerate(num := num):
     a, b = n[0], n[1]
     c = str(int(a) + int(b))
     d = c[-1]
     e = b + d
     num.append(e)
-    i += 1
     
     if num[-1] == num[0]:
         print(len(num)-1)
