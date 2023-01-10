@@ -24,5 +24,8 @@ print(*t)
 r=range(9999)
 print(*sorted({*r}-{n+sum(map(int,str(n)))for n in r}))
 
+# n+sum(map(int, str(n))) for n in r   => d(n) 함수의 역할
+# 세트끼리의 연산 활용
+
 
 """
