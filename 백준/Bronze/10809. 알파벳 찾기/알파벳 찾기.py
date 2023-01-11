@@ -6,3 +6,4 @@ for i in range(97, 123):
     else:
         print(-1, end=' ')
         
+"""print(*map(input().find,map(chr,range(97,123))))"""
