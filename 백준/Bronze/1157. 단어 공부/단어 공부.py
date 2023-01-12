@@ -12,3 +12,11 @@ if cnt.count(x) > 1:
     print('?')
 else:
     print(alphabet[cnt.index(x)])
+
+"""
+Note:
+s = input().upper()
+# c = s.count
+*_,a,b = v = sorted({*s, '?'}, key=s.count)   # <class 'list'>
+print(v[-(s.count(a) < s.count(b))])
+"""
