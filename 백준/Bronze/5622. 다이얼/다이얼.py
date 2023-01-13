@@ -10,3 +10,16 @@ for i in input():
     s += ls[chars.index(i)]
 
 print(s)
+
+"""
+숏코딩 분석
+print(sum(5*min(ord(x),88)//16-17for x in input()))
+
+s = 0
+for x in input():
+    s += 5 * min(ord(x), 88) // 16 - 17)
+
+print(s)
+
+이건 뭐 별수없다.
+"""
