@@ -28,3 +28,13 @@
 
  <p>첫 번째 줄에 손익분기점 즉 최초로 이익이 발생하는 판매량을 출력한다. 손익분기점이 존재하지 않으면 -1을 출력한다.</p>
 
+### 숏코딩 분석
+```python
+# original
+a,b,c=map(int,input().split())
+print(-(b>=c)or a//(c-b)+1)
+
+# equivalently
+a, b, c = map(int, input().split())
+print(-(b >= c) or a // (c - b) + 1)   # or을 이렇게도 쓰는구나
+```
