@@ -24,3 +24,19 @@
 
  <p>첫째 줄에 그룹 단어의 개수를 출력한다.</p>
 
+### 숏코딩 분석
+```python
+# original(space added)
+print(sum([*x] == sorted(x, key=x.find) for x in open(0)) - 1)
+
+# equivalently
+n = 0
+for word in open(0):
+    # 문자열의 find 메서드는 substring의 가장 작은 인덱스를 반환한다.
+    # sorted 함수는 리스트를 반환한다.
+    # 리스트로 변환된 단어가 한 문자가 단어에 처음 나타난 순서대로 정렬되었을 때와 같다면 n에 1을 더한다.
+    if [*word] == sorted(word, key=word.find):
+        n += 1
+
+print(n - 1)
+```
