@@ -1,4 +1,5 @@
-import re, time
+import time
+# import re
 from itertools import product
 
 start_time = time.time()
@@ -14,7 +15,8 @@ prod = product(str_hour, str_min, str_sec)
 
 n = 0
 for hour, min, sec in prod:
-    if re.search('3', hour) or re.search('3', min) or re.search('3', sec):
+    # if re.search('3', hour) or re.search('3', min) or re.search('3', sec):
+    if '3' in str(hour) + str(min) + str(sec):
         n += 1
 
 print(n)
