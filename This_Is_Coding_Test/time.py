@@ -1,5 +1,7 @@
-import re
+import re, time
 from itertools import product
+
+start_time = time.time()
 
 hour = list(range(int(input()) + 1))
 min = list(range(60))
@@ -16,3 +18,26 @@ for hour, min, sec in prod:
         n += 1
 
 print(n)
+
+end_time = time.time()
+
+print(end_time - start_time)
+
+
+
+
+start_time = time.time()
+h = int(input())
+
+count = 0
+for i in range(h + 1):
+    for j in range(60):
+        for k in range(60):
+            if '3' in str(i) + str(j) + str(k):
+                count += 1
+
+print(count)
+end_time = time.time()
+
+print(end_time - start_time)
+
