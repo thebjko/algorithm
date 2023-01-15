@@ -13,10 +13,10 @@ dy = [-1, 1, 0, 0]
 move_types = ['L', 'R', 'U', 'D']
 
 for plan in plans:
-    for i, j in enumerate(move_types):
-        if plan == j:
-            nx = x + dx[i]
-            ny = y + dy[i]
+    for index, move in enumerate(move_types):
+        if plan == move:
+            nx = x + dx[index]
+            ny = y + dy[index]
     
     if nx < 1 or ny < 1 or nx > n or ny > n:
         continue
