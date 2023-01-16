@@ -1,6 +1,6 @@
-# [Bronze V] A+B - 1000 
+# [Bronze V] A+B - 2 - 2558 
 
-[문제 링크](https://www.acmicpc.net/problem/1000) 
+[문제 링크](https://www.acmicpc.net/problem/2558) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 입력 
 
- <p>첫째 줄에 A와 B가 주어진다. (0 < A, B < 10)</p>
+ <p>첫째 줄에 A, 둘째 줄에 B가 주어진다. (0 < A, B < 10)</p>
 
 ### 출력 
 
