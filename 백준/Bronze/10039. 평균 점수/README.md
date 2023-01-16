@@ -28,3 +28,19 @@
 
  <p>첫째 줄에 학생 5명의 평균 점수를 출력한다.</p>
 
+### 숏코딩 
+```python
+print(eval("+max(8,int(input())//5)"*5))
+```
+
+[`eval` 함수에 관하여](https://bluese05.tistory.com/64)
+예:
+```python
+expr = "10 + 10"
+
+type(expr)
+>>> <type 'str'>
+
+eval(expr)
+>>> 20
+```
