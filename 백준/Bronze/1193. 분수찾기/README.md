@@ -117,3 +117,25 @@ a % 2 * - 1
 # a가 홀수일 때
 >>> 1
 ```
+
+일단 이렇게까지는 줄일 수 있었다.
+```python
+T = int(input())
+
+n = 1
+flag = 1
+numerator = [1]
+denominator = [1]
+
+while T > n:
+    T -= n
+    n += 1
+    
+    numerator = [*range(1, n + 1)][::flag]
+    flag *= -1
+    denominator = [*range(1, n + 1)][::flag]
+
+print(f"{denominator[n - T]}/{numerator[n - T]}")
+
+```
+불필요한 리스트 어펜딩을 줄임으로써 메모리는 1/9로 확실히 줄였지만 시간은 여전히 412ms로 숏코딩보다 훨씬 크다.
