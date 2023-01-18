@@ -1,0 +1,1 @@
+print('1' if (n := input()) == n[::-1] else '0')
