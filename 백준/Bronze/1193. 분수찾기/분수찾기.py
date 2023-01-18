@@ -1,3 +1,5 @@
+# PyPy3로 제출시 맞았습니다!!
+# 파이썬은 왜 안될까?
 # import time
 
 T = int(input())
