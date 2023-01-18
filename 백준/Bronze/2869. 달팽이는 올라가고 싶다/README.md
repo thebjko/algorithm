@@ -35,3 +35,10 @@ a,b,v=map(int,input().split());print(1-(a-v)//(a-b))
 a, b, v = map(int, input().split())
 print(1-(a-v)//(a-b))
 ```
+
+그리고
+```python
+# 둘이 같지 않다.
+print(1-(a-v)//(a-b))
+print(1+(v-a)//(a-b))
+```
