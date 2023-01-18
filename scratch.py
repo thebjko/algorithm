@@ -1,63 +1,24 @@
-import sys
-sys.stdin = open('input.txt')
+# import time
 
-# # ls = list(input().upper())
-# ls = list('a'*1000000)
-# sls = []
+T = int(input())
+# start_time = time.time()
+n = 1
 
-# for i, j in enumerate(ls):
-#     sls.append(ls.count(ls[i]))
-
-# lsls = set(zip(ls, sls))
-
-# x = 0
-# y = ''
-
-# for i, j in lsls:
-#     if j == x:
-#         print('?')
-#         exit()
-#     elif j > x:
-#         x = j
-#         y = i
-
-# print(y)
+flag = 1
+numerator = [1]
+denominator = [1]
+while T > n:
+    T -= n
+    n += 1
     
+    ls = [*range(1, n+1)]
+    numerator = ls[::flag]
+    flag *= -1
+    denominator = ls[::flag]
+    print(denominator, numerator, n-T)
 
-ls = list(input().upper())
-# ls = list('A'*500_000 + 'B'*500_000)
-alphabet = [*map(chr, range(65, 91))]
-cnt = []
-
-for i in alphabet:
-    cnt.append(ls.count(i))
-
-x = max(cnt)
-if cnt.count(x) > 1:
-    print('?')
-else:
-    print(ls[cnt.index(x)])
+print(f"{denominator[n - T]}/{numerator[n - T]}")
+# end_time = time.time()
+# print(end_time - start_time)
 
 
-# n = -1
-# for i in alphabet:
-#     d[i] = ls.count(i)
-#     if ls.count(i) > n:
-#         n = ls.count(i)
-
-# m = 0
-# for i, j in d.items():
-#     print(i)
-#     if j == n:
-#         d.pop(i)
-#         m += 1
-    
-# if m > 1:
-#     print('?')
-# else:
-#     # Python: Get Dictionary Key with the Max Value (4 Ways)
-#     # https://datagy.io/python-get-dictionary-key-with-max-value/
-#     print(max(d, key=d.get))
-
-
-    
