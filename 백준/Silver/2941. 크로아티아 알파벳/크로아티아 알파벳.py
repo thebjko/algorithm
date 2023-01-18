@@ -5,11 +5,3 @@ for i in cr:
     n -= s.count(i)
 
 print(n)
-
-"""
-숏코딩
-import re
-print(len(re.sub('dz=|[ln]j|\w\W','Z',input())))
-
-한 문자로 변환해서 계산
-"""
