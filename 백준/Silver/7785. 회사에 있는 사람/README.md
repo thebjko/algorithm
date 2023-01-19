@@ -28,3 +28,14 @@
 
  <p>현재 회사에 있는 사람의 이름을 사전 순의 역순으로 한 줄에 한 명씩 출력한다.</p>
 
+### 로그
+처음에 아래의 코드로 시도했으나 너무 느려서 바꿨다. 20배 이상 빨라졌다.
+```python
+employees = {}
+for i in range(int(input())):
+    name, status = input().split()
+    employees[name] = status
+
+(ls := sorted([i for i, j in employees.items() if j == 'enter'])).reverse()
+print(*ls, sep="\n")
+```
