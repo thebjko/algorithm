@@ -1,7 +1,5 @@
+ls = open(0).read().split()[1:]
+ls = zip(ls[::2], ls[1::2])
 employees = {}
-for i in range(int(input())):
-    name, status = input().split()
-    employees[name] = status
-
-(ls := sorted([i for i, j in employees.items() if j == 'enter'])).reverse()
-print(*ls)
+employees.update(ls)
+print(*sorted([i for i, j in employees.items() if j == 'enter'], reverse=True))
