@@ -34,3 +34,15 @@
 
  <p>프로그램은 표준 출력에 출력한다. 각 테스트 데이터마다 정확히 한 행을 출력하는데, 내용은 N 번째 손님에게 배정되어야 하는 방 번호를 출력한다.</p>
 
+### 숏코딩 분석
+```python
+# original:
+for r in[*open(0)][1:]:h,_,n=map(int,r.split());n-=1;print((n%h+1)*100+n//h+1)
+
+# equivalent to:
+for r in [*open(0)][1:]:
+    h, _, n = map(int, r.split())
+    n -= 1
+    print((n % h + 1) * 100 + n // h + 1)
+
+```
