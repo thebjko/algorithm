@@ -39,8 +39,6 @@ def num_inhabitants(k: int, n: int) -> int:
 
     if k == 0:
         return n
-    elif k < 0:
-        return inhabitants
 
     for i in range(1, n + 1):
         inhabitants += num_inhabitants(k - 1, i)
