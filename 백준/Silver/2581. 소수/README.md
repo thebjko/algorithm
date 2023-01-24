@@ -35,7 +35,7 @@ m = int(input())
 n = int(input())
 l = [1] * (n + 1)   # 1이 n + 1개 담긴 하나의 리스트
 l[1] = 0
-for i in range(2, int(n ** (0.5)) + 1):
+for i in range(2, int(n ** (0.5)) + 1):   # 정수론
     if l[i]:
         for j in range(i * i, n + 1, i):
             l[j] = 0
@@ -48,3 +48,4 @@ else:
     print(min(l))
 
 ```
+정수론을 사용한다.
