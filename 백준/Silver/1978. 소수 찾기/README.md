@@ -22,3 +22,9 @@
 
  <p>주어진 수들 중 소수의 개수를 출력한다.</p>
 
+
+### 숏코딩
+```python
+print(sum(1 < i * all(i % j for j in range(2,i)) for i in map(int, [*open(0)][1].split())))
+
+```
