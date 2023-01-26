@@ -8,5 +8,10 @@ while x != m:
         n //= i
         print(i)
         
+    elif i > n ** .5:
+        if n != 1:
+            print(n)
+        break
+
     else:
         i += 1
