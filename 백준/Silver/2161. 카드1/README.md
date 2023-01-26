@@ -28,3 +28,41 @@
 
  <p>첫째 줄에 버리는 카드들을 순서대로 출력한다. 제일 마지막에는 남게 되는 카드의 번호를 출력한다.</p>
 
+ ### 다른 코드 분석
+ 아래는 플래티넘 4의 코드이다
+ ```python
+N = int(input())
+Q = [i for i in range(2, N+1)]
+res = '1'
+while Q:
+    Q.append(Q.pop(0))
+    if Q:
+        res += f' {Q.pop(0)}'
+
+print(res)
+```
+#### 숏코딩
+플래 4:
+```python
+l = [*range(int(input()))]
+r = []
+while len(l) > 1:
+    r += [l[0] + 1]   # append와 같다. 0 부터니까 + 1
+    l = l[2:] + l[1:2]   # 다음 숫자 뒤로 옮기기
+
+print(*r, l[0] + 1)   # 이건 왜? -> 0 부터 입력값 전까지이니까
+```
+
+루비 4:
+```python
+r = []
+d = range(1, int(input()) + 1)
+f = 0
+while d:
+    r += d[f::2]   # range(1, 8, 2) 와 같이 된다
+    d = d[1 - f::2]   # range(2, 8, 2) 와 같이 된다
+    f = f ^ len(d) % 2   # ^ 비트 XOR 연산
+    # 첫번째로 0 ^ 3 == 0000 ^ 0011 == 3
+
+print(*r)
+```
