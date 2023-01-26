@@ -32,3 +32,37 @@
 
  <p>재민이가 최종적으로 적어 낸 수의 합을 출력한다. 최종적으로 적어낸 수의 합은 2<sup>31</sup>-1보다 작거나 같은 정수이다.</p>
 
+### 다른 코드 분석
+다들 스택을 사용했다. 어려운 기능은 없으나 다른 코드들을 살펴보자.
+```python
+import sys
+def s_10773():
+    K = int(input())
+    s = []
+    for _ in range(K):
+        n = int(sys.stdin.readline())
+        if n:
+            s.append(n)
+        else:
+            s.pop()
+    print(sum(s))
+
+
+if __name__ == "__main__":
+    solution = s_10773
+    solution()
+    
+```
+위 코드는 한 파일에 여러 코드를 넣고 아래 부분만 바꿔서 실행하나보다.   
+for 반복문 조건에 바로 `open(0)`만 넣기도 한다.
+```python
+# 숏코딩
+s=[]
+for i in open(0):
+    if (n := int(i)):
+        s += [n]   # append 메서드 대신
+    else:
+        s.pop()
+
+print(sum(s[1:]))
+```
