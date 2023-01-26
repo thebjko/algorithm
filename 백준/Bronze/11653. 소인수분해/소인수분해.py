@@ -7,6 +7,11 @@ while x != m:
         x *= i
         n //= i
         print(i)
-        
+
     else:
         i += 1
+        if i > n ** .5:
+            if n != 1:
+                print(n)
+            break
+    
