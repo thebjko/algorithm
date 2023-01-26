@@ -28,24 +28,3 @@
 
 <p>단, M이상 N이하의 자연수 중 소수가 없을 경우는 첫째 줄에 -1을 출력한다.</p>
 
-### 다른 코드 분석
-아래는 다른 제출자의 코드이다.
-```python
-m = int(input())
-n = int(input())
-l = [1] * (n + 1)   # 1이 n + 1개 담긴 하나의 리스트
-l[1] = 0
-for i in range(2, int(n ** (0.5)) + 1):   # 정수론
-    if l[i]:
-        for j in range(i * i, n + 1, i):
-            l[j] = 0
-
-l=[i for i in range(m, n + 1) if l[i] == 1]
-if sum(l) == 0:
-    print(-1)
-else:    
-    print(sum(l))
-    print(min(l))
-
-```
-정수론을 사용한다.
