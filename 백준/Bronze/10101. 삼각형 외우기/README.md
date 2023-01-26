@@ -33,3 +33,9 @@
 
  <p>문제의 설명에 따라 Equilateral, Isosceles, Scalene, Error 중 하나를 출력한다.</p>
 
+### 숏코딩 분석
+```python
+print(['Error','Equilateral','Isosceles','Scalene'][(sum(c:=[*map(int,open(0))])==180)*len({*c})])
+```
+입력값을 c에 받아서 합이 180이면 1 아니면 0.
+c를 세트로 만들면 1일때 정삼각형, 2일때 이등변 삼각형 3일때 Scalene.
