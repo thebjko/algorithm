@@ -27,3 +27,16 @@
 
  <p>조건에 따라 정렬하여 단어들을 출력한다. 단, 같은 단어가 여러 번 입력된 경우에는 한 번씩만 출력한다.</p>
 
+### 다른 코드 분석
+kimbro6님의 코드:
+```python
+import sys
+
+word_list = list(set(sys.stdin.readlines()[1:]))
+
+word_list.sort()
+word_list.sort(key=lambda letter : len(letter))
+
+print("".join(word_list))
+```
+그냥 `sort`두번이면 된다.
