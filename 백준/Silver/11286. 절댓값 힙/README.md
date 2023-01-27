@@ -29,3 +29,15 @@
 
  <p>입력에서 0이 주어진 회수만큼 답을 출력한다. 만약 배열이 비어 있는 경우인데 절댓값이 가장 작은 값을 출력하라고 한 경우에는 0을 출력하면 된다.</p>
 
+### 숏코딩 분석
+jack100님의 코드:
+```python
+from heapq import *
+h = []
+for i in [*open(0)][1:]:
+	if (a := int(i)):
+		heappush(h, (abs(a), a))
+	else: 
+		print(len(h) and heappop(h)[1])   # and 연산으로 len(h)가 0일 경우에 출력되지 않게 했다.
+
+```
