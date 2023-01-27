@@ -35,7 +35,8 @@ import sys
 word_list = list(set(sys.stdin.readlines()[1:]))
 
 word_list.sort()
-word_list.sort(key=lambda letter : len(letter))
+# word_list.sort(key=lambda letter : len(letter))
+word_list.sort(key=len)
 
 print("".join(word_list))
 ```
