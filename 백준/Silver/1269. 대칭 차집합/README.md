@@ -23,3 +23,30 @@
 
  <p>첫째 줄에 대칭 차집합의 원소의 개수를 출력한다.</p>
 
+### 다른 코드 분석
+rlehd1213님의 코드:
+```python
+a, b = map(int, input().split())
+
+A = list(input().split())
+B = list(input().split())
+
+print(2 * len(set(A + B)) - a - b)
+
+```
+164ms, 메모리 약 88MB.
+리스트를 먼저 더하고 세트로 변환한 뒤 곱하기 2에 a와 b의 원소 개수를 뺀다.  
+N(A - B)라면 A의 원소 개수에서 교집합의 원소 개수만큼 빼고, N(A - B)는 B의 원소 개수애서 교집합의 원소 개수만큼 뺀다. N(A-B) + N(B-A)를 구하고 있다. `set(A)^set(B)`라면 `set(A) + set(B)`에서 교집합의 개수만큼 한번 뺀다. `set(A + B)`는?  
+`set(A + B)`는 `set(A) | set(B)`(합집합)과 같다. 그런데 그 원소의 개수 * 2를 하고 A의 원소의 개수와 B의 원소의 개수를 빼면 `set(A + B)`에서 교집합을 뺀 것과 같다.
+
+
+sait2000님의 숏코드:
+```python 
+r = lambda: {*input().split()}
+r()
+print(len(r() ^ r()))
+
+```
+lambda를 이렇게 쓸 수 도 있구나.
+`input = sys.stdin.readline`라 하면 성능이 좀 더 단축될까?
+(메모리 약 100MB, 시간 228ms)
