@@ -32,6 +32,12 @@
 ### 숏코딩 분석
 jack100님의 코드:
 ```python
+# originally:
+from heapq import*
+h=[]
+for i in[*open(0)][1:]:heappush(h,(abs(a),a))if(a:=int(i))else print(len(h)and heappop(h)[1])
+
+# equivalently:
 from heapq import *
 h = []
 for i in [*open(0)][1:]:
@@ -41,3 +47,4 @@ for i in [*open(0)][1:]:
 		print(len(h) and heappop(h)[1])   # and 연산으로 len(h)가 0일 경우에 출력되지 않게 했다.
 
 ```
+if의 조건에서 walrus 연산이 들어갔으나 그 앞에서 a를 사용할 수 있음을 볼 수 있다.
