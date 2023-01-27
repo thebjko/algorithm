@@ -22,3 +22,10 @@
 
  <p>두 번째로 큰 정수를 출력한다.</p>
 
+### 다른 코드 분석
+sait2000님의 코드:
+```python
+print(sorted(input().split(), key=int)[1])
+
+```
+key를 int로도 할 수 있다.
