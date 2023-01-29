@@ -30,3 +30,20 @@
 
  <p>첫째 줄에 M개의 문자열 중에 총 몇 개가 집합 S에 포함되어 있는지 출력한다.</p>
 
+### 다른 코드 분석
+seongwoo0513님의 코드:
+```python
+n, _, *s = open(0).read().split()
+print(sum(map(set(s[: int(n)]).__contains__, s[int(n) :])))
+
+```
+`__contains__`를 사용한다.
+
+ljwljw8541님의 코드
+```python
+N,S,*A=open(0).read().split();N=int(N)
+K={*A[:N]}
+print(sum(i in K for i in A[N:]))
+
+```
+in 키워드로 True, False 반환 받을 수 있다.
