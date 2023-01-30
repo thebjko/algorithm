@@ -29,3 +29,19 @@
  <p>
 	첫 줄에 네개의 직사각형이 차지하는 면적을 출력한다.</p>
 
+### 다른 코드 분석
+[joonion 님의 코드](https://www.acmicpc.net/source/53803543):
+```python
+r=[]
+for i in open(0):a,b,c,d=map(int,i.split());r+=[(x,y)for x in range(a,c)for y in range(b,d)]
+print(len(set(r)))
+
+# equivalently:
+r = []
+for i in open(0):
+	a, b, c, d = map(int, i.split())
+	r += [(x, y) for x in range(a, c) for y in range(b, d)]
+
+print(len(set(r)))
+
+```
