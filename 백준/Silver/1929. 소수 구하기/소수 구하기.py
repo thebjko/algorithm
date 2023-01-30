@@ -5,7 +5,7 @@ s = set(ls)
 
 i = 0
 while True:
-    if i > n ** .5:
+    if i > n ** .5 / 2:
         break
     try:
         entry = ls[i]
@@ -14,6 +14,7 @@ while True:
         else:
             s -= {j for j in range(2 * entry, n + 1, entry)}
             ls = sorted(list(s))
+            s = set(ls)
     except:
         pass
     finally:
