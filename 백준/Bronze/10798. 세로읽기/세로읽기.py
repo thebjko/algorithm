@@ -1,7 +1,11 @@
 words = []
 for word in open(0):
-    words += [word.strip() + " " * (16 - len(word))]
+    words += [word.strip()]
+
+m = max(map(len, words))
+for idx, word in enumerate(words):
+    words[idx] += " " * (m - len(word))
 
 words = list(map(list, zip(*words)))
-for x in words:
-    print(''.join(x).replace(" ", ""), end="")
+for word in words:
+    print(''.join(word).replace(" ", ""), end="")
