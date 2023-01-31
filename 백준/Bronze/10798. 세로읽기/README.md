@@ -42,3 +42,28 @@ P 5 h 3 k x</pre>
 
  <p>영석이가 세로로 읽은 순서대로 글자들을 출력한다. 이때, 글자들을 공백 없이 연속해서 출력한다. </p>
 
+### 다른 코드 분석
+[joonion 님의 코드](https://www.acmicpc.net/source/53740130):
+```python
+x=['']*75
+i=0
+while i<5:
+  j=0;s=input()
+  while j<len(s):x[j*5+i]=s[j];j+=1
+  i+=1
+print("".join(x))
+
+# Equivalently:
+x = [''] * 75
+i = 0
+while i < 5:
+    j = 0
+    s = input()
+    while j < len(s):
+        x[j * 5 + i] = s[j]
+        j += 1
+    i += 1
+
+print("".join(x))
+```
+
