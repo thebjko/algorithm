@@ -28,3 +28,27 @@
 
  <p>각 테스트 케이스마다 입력으로 주어진 그리드에서 모든 박스가 이동한 거리를 출력한다.</p>
 
+### 다른 코드 분석
+[jkb1115님의 코드](https://www.acmicpc.net/source/55006808):
+```python
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+
+for _ in range(t):
+    m, n = map(int, input().split())
+    data = [list(input().split()) for _ in range(m)]
+    total = 0
+    for n1 in range(n):
+        cnt0 = cnt1 = 0
+        sum_ = 0
+        for m1 in range(m):
+            if data[m1][n1] == '1':
+                cnt1 += 1
+            elif data[m1][n1] == '0':
+                if cnt1 > 0:
+                    sum_ += cnt1
+        total += sum_
+    print(total)
+```
