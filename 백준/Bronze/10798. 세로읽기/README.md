@@ -42,3 +42,82 @@ P 5 h 3 k x</pre>
 
  <p>영석이가 세로로 읽은 순서대로 글자들을 출력한다. 이때, 글자들을 공백 없이 연속해서 출력한다. </p>
 
+### 다른 코드 분석
+[joonion 님의 코드](https://www.acmicpc.net/source/53740130):
+```python
+x=['']*75
+i=0
+while i<5:
+  j=0;s=input()
+  while j<len(s):x[j*5+i]=s[j];j+=1
+  i+=1
+print("".join(x))
+
+# Equivalently:
+x = [''] * 75
+i = 0
+while i < 5:
+    j = 0
+    s = input()
+    while j < len(s):
+        x[j * 5 + i] = s[j]
+        j += 1
+    i += 1
+
+print("".join(x))
+```
+> 메모리 29MB, 시간 64ms
+
+1. 공백문자 75개를 담은 리스트로 `x`를 초기화. (15 * 5)
+2. `i = 0` : 5개의 단어가 주어지므로 0에서 4까지 5번 `s = input()`
+3. `j = 0` : 각 단어의 문자(`s[j]`)를 `j`의 5의 배수의 인덱스로 `x`에 담는데, 각 단어마다 한칸씩 옆으로 옮김 (`+ i`)
+
+[skygarlics님의 코드](https://www.acmicpc.net/source/740239):
+```python
+b=['']*20
+for _ in'a'*5:
+ c=0
+ for i in input():b[c]+=i;c+=1
+print(''.join(b))
+
+# Equivalently:
+b = [''] * 20
+for _ in ('a' * 5):
+    c = 0
+    for i in input():
+        b[c] += i
+        c += 1
+
+print(''.join(b))
+```
+> 메모리 29MB, 시간 64ms
+
+1. 20개의 공백문자를 담은 리스트로 `b` 초기화.
+2. `ranage(5)` 보다 `'a'*5`가 짧아서 이렇게 한듯?
+3. `input()`을 받아서 각 문자 `i`를 문자열인 `b[c]`에 더해준다.
+
+[sait2000님의 코드](https://www.acmicpc.net/source/5236234):
+```python
+print(''.join(sum(zip(*eval('input()+" "*15,'*5)),())).replace(' ',''))
+
+# Equivalently:
+print(''.join(sum(zip(*eval('input() + " " * 15,' * 5)), ())).replace(' ', ''))
+```
+> 메모리 29MB, 시간 64ms
+
+1. eval 함수는 문자열로 입력한 함수의 결과를 출력한다.
+  - 여기서는 입력값에 공백문자 15개를 붙이는 코드를 5번 실행한다.
+2. 그리고 각 문자열을 `zip`해서 `sum`함수의 인자로 넘기는데, 두번째 인자 `()`는 빈 튜플인가?
+  - `print(sum(zip(*eval('input().strip() + " " * 15,' * 5))))` 만 실행하면 아래와 같은 오류가 뜬다:
+  - `TypeError: unsupported operand type(s) for +: 'int' and 'tuple'`
+  - 뒤에 빈 튜플`()`을 추가하면 원하는 결과를 얻을 수 있다.
+  - 이 성질은 다른데서 찾아보기 힘들다.
+  - 또는 `itertools`의 `chain` 함수를 사용하여 아래와 같이 쓸 수도 있다.
+```python
+from itertools import chain
+
+z = zip(*eval('input().strip() + " " * 15,' * 5))
+print(''.join(chain(*z)).replace(" ", ""))
+
+```
+3. **`input()`에 `strip()` 메서드를 사용해야 한다.**

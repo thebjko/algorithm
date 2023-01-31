@@ -11,11 +11,13 @@ sec = list(range(60))
 str_hour = list(map(str, hour))
 str_min = list(map(str, min))
 str_sec = list(map(str, sec))
+print(str_hour, str_min, str_sec)
 prod = product(str_hour, str_min, str_sec)
 
 n = 0
 for hour, min, sec in prod:
     # if re.search('3', hour) or re.search('3', min) or re.search('3', sec):
+    # print(hour, min, sec)
     if '3' in str(hour) + str(min) + str(sec):
         n += 1
 
