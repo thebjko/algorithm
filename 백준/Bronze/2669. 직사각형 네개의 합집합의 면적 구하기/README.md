@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 30616 KB, 시간: 56 ms
+메모리: 31256 KB, 시간: 44 ms
 
 ### 분류
 
@@ -17,7 +17,7 @@
 <p>
 	이 직사각형들이 차지하는 면적을 구하는 프로그램을 작성하시오.</p>
 <p>
-	<img alt="" src="" style="width: 294px; height: 227px; "></p>
+	<img alt="" src="https://www.acmicpc.net/upload/images/8vR77Ew2O2PqvZ1lER716.png" style="width: 294px; height: 227px; "></p>
 
 ### 입력 
 
@@ -29,19 +29,3 @@
  <p>
 	첫 줄에 네개의 직사각형이 차지하는 면적을 출력한다.</p>
 
-### 다른 코드 분석
-[joonion 님의 코드](https://www.acmicpc.net/source/53803543):
-```python
-r=[]
-for i in open(0):a,b,c,d=map(int,i.split());r+=[(x,y)for x in range(a,c)for y in range(b,d)]
-print(len(set(r)))
-
-# equivalently:
-r = []
-for i in open(0):
-	a, b, c, d = map(int, i.split())
-	r += [(x, y) for x in range(a, c) for y in range(b, d)]
-
-print(len(set(r)))
-
-```
