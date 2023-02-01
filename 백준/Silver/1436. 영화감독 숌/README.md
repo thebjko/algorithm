@@ -35,34 +35,55 @@
 ```python
 import sys
 
-def how(n):
-    if n % 10 == 6:
-        return 10 * how(n // 10)
+def how(n: int) -> int:
+    if n % 10 == 6:   # 1의 자리 숫자가 6이면:
+        return 10 * how(n // 10)   # 10으로 나눈 몫을 how 호출한다. 
+        # -> 10의 자리, 100의 자리, ... 가 6인지 확인
     else: 
-        return 1
+        return 1   # 1의 자리 숫자가 6이 아니면 1을 반환
+    """
+    예를 들어, n = 26일 때
+    1의 자리 숫자가 6이므로
+    10 * how(2)이 반환되고, how(2)은 1의자리가 6이 아니므로 1이 반환된다.
+    결과적으로 10이 반환된다.
+    66은 100이 반환되고
+    666은 1000이 반환된다.
+    그리고 연속적이지 않은 6들은 재귀하지 않고 1을 반환한다.
+    """
 
-def getRes(first, mid, last, lst):
-    print(first * 1000 * lst + mid * lst + last)
-    sys.exit(0)
+def get_result(first: int, mid: int, last: int, lst: int) -> None:
+    print(first * 1000 * lst + mid * lst + last)   # 결과값 출력
+    sys.exit(0)   # 종료
 
-N = int(input())
-first, mid, last, cnt = 0, 666, 0, 0
+N = int(input())   # 입력값 받기
+first, mid, last, cnt = 0, 666, 0, 0   # 초기화
 
 while cnt < N:
-    idx = how(first)
-    if idx > 1:
-        for i in range(0, idx):
-            cnt += 1
+    idx = how(first)   # 첫 번째 루프  : first = 0, how(first) = 1
+                       # 두 번째 루프  : first = 1, how(first) = 1
+                       # 세 번째 루프  : first = 2, how(first) = 1
+                       # 네 번째 루프  : first = 3, how(first) = 1
+                       # 다섯 번째 루프: first = 4, how(first) = 1
+                       # 여섯 번째 루프: first = 5, how(first) = 1
+                       # 일곱 번째 루프: first = 6, how(first) = 10
+                       # 이까지 왔다는 말은 N이 7 이상이라는 말이다.
+
+    if idx > 1:   # 일곱 번째 루프에서 진입, cnt = 6, range -> 0~9
+        for _ in range(0, idx):
+            cnt += 1   # 첫번째 루프: cnt = 7
             if cnt == N:
-                getRes(first // idx, mid, last, idx)
+                get_result(first // idx, mid, last, idx)   # idx가 first보다 크다면 0
             last += 1
         last = 0
-    else:
+    else:   # 첫번째 ~ 여섯번째 루프에서 실행되는 블록
         cnt += 1
-        if cnt == N:
-            getRes(first, mid, last, idx)
-    first += 1
+        if cnt == N:   # N이 1이었다 치면 -> 666
+            get_result(first, mid, last, idx)   
+    first += 1   # N이 1이 아니라면 다음 루프로
 
 ```
 > 메모리 약 30MB, 시간 36ms
 
+숫자들의 관계를 파악하는게 중요하다.  
+아직 내겐 버겁다. 하지만 탐나는 성능이다.  
+해당 숫자들을 나열해보면 가운데 666을 기준으로 왼쪽에서 1~5까지 가고 여섯번째 숫자에서 오른쪽으로 0부터 9까지, 다시 왼쪽에서 7부터 15, 그리고 1이 되면서 오른쪽에 0부터 이어진다.  
