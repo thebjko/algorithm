@@ -30,3 +30,39 @@
 
  <p>첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.</p>
 
+### 다른 코드 분석
+[amgkd9님의 코드](https://www.acmicpc.net/source/53397501)를 정리했다:
+```python
+import sys
+
+def how(n):
+    if n % 10 == 6:
+        return 10 * how(n // 10)
+    else: 
+        return 1
+
+def getRes(first, mid, last, lst):
+    print(first * 1000 * lst + mid * lst + last)
+    sys.exit(0)
+
+N = int(input())
+first, mid, last, cnt = 0, 666, 0, 0
+
+while cnt < N:
+    idx = how(first)
+    if idx > 1:
+        for i in range(0, idx):
+            cnt += 1
+            if cnt == N:
+                getRes(first // idx, mid, last, idx)
+            last += 1
+        last = 0
+    else:
+        cnt += 1
+        if cnt == N:
+            getRes(first, mid, last, idx)
+    first += 1
+
+```
+> 메모리 약 30MB, 시간 36ms
+
