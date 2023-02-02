@@ -26,3 +26,11 @@
 
  <p>W 대학 점수와 K 대학의 점수를 순서대로 공백으로 구분하여 출력하라.</p>
 
+### 다른 코드 분석  
+[ljwljw8541님의 코드](https://www.acmicpc.net/source/54372042):
+```python
+exec("print(sum(sorted(eval('int(input()),'*10))[7:]));"*2)
+```
+> 메모리 약 30MB, 시간 36ms  
+1. 내 코드와 같은 원리이나 시간, 메모리 측면에서 더 효율적이다. 왜?  
+2. `eval('int(input()),' * 10)`이 iterable을 반환했다.
