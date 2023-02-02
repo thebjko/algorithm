@@ -28,3 +28,12 @@
 
  <p>첫째 줄에 공이 들어있는 컵의 번호를 출력한다. 공이 사라져서 컵 밑에 없는 경우에는 -1을 출력한다.</p>
 
+### 숏코딩 분석
+[sait2000님의 코드](https://www.acmicpc.net/source/5158338):
+```python
+a=1;exec('i,j=map(int,input()[::2]);a=[i+j-a,a][i!=a!=j];'*int(input()));print(a)
+
+# Equivalently:
+
+```
+> 메모리 약 29MB, 시간 68ms
