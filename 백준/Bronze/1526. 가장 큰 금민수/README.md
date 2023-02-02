@@ -24,3 +24,21 @@
 
  <p>첫째 줄에 N보다 작거나 같은 금민수 중 가장 큰 것을 출력한다.</p>
 
+### 다른 코드 분석
+[vkdidjvkdnj님의 코드](https://www.acmicpc.net/source/53476492):
+```python
+def solve(here):
+    result = here
+    if here * 10 + 4 <= N:
+        result = max(result, solve(here * 10 + 4))
+    if here * 10 + 7 <= N:
+        result = max(result, solve(here * 10 + 7))
+    return result
+
+N = int(input())
+print(solve(0))
+
+```
+> 메모리 약 30MB, 시간 36ms
+
+4와 7에서 시작해 44, 47, 74, 77을 체크하는 코드. 재귀함수를 사용하는 방법을 보자.
