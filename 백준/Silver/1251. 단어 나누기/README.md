@@ -49,4 +49,4 @@ print(min(s[j:] + s[i:j] + s[:i] for i in range(1, n) for j in range(i + 1, n)))
 > 메모리 약 30MB, 시간 36ms
 
 1. 문자열을 뒤집어서 시작. 길이를 구하고 `n`에 저장
-2. 
+2. 1부터 `n - 1`까지의 `i`, `i + 1`부터 `n - 1`까지의 `j`
