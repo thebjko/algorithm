@@ -1,3 +1,4 @@
+# 코드 최적화
 import sys
 
 input = sys.stdin.readline
@@ -8,13 +9,13 @@ for _ in range(int(input())):
     for _ in range(rows):
         matrix.append(input().split())
     
-    rotated = list(map(list, zip(*matrix)))
+    transposed = zip(*matrix)
 
     cnt = 0
-    for i in rotated:
-        s = ''.join(i)
-        while "10" in s:
-            cnt += s.count("10")
+    for i in transposed:
+        s = "".join(i)
+        while (n := s.count("10")):
             s = s.replace("10", "01")
+            cnt += n
 
     print(cnt)
