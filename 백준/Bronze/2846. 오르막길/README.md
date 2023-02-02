@@ -43,10 +43,7 @@ print(max(t := (t + i - j) * (i > j) for i, j in zip(a[1:], a)))
 
 1. `t`가 0으로 초기화된다.
 2. `zip`함수를 사용해 `a`의 각 원소들과 그 다음원소들을 튜플로 묶어서 for 반복문을 돌린다.
-<<<<<<< HEAD
-=======
     - [참고](https://stackoverflow.com/questions/2400840/python-finding-differences-between-elements-of-a-list)
->>>>>>> 88a4a2a (2846. 오르막길 - 다른 코드 분석 - zip 함수의 활용)
 3. `(i > j)` : `a`의 각 원소가 그 다음 원소보다 작다면 1, 아니면 0
 4. 작다면 `(t + 1 - j)`의 값으로 `t`에 할당한 각 값으로
     - 왜 `(t + 1 - j)` 인가?
