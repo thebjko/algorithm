@@ -37,3 +37,17 @@ a=1;exec('i,j=map(int,input()[::2]);a=[i+j-a,a][i!=a!=j];'*int(input()));print(a
 
 ```
 > 메모리 약 29MB, 시간 68ms
+
+[ktr040415님의 코드]():
+```python 
+n='1'
+for _ in range(int(input())):
+ a,b=input().split()
+ if a==n:n=b
+ elif b==n:n=a
+print(n)
+
+# Equivalently:
+
+```
+> 메모리 약 30MB, 시간 36ms
