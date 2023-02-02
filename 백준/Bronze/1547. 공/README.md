@@ -28,3 +28,58 @@
 
  <p>첫째 줄에 공이 들어있는 컵의 번호를 출력한다. 공이 사라져서 컵 밑에 없는 경우에는 -1을 출력한다.</p>
 
+### 숏코딩 분석
+[sait2000님의 코드](https://www.acmicpc.net/source/5158338):
+```python
+a=1;exec('i,j=map(int,input()[::2]);a=[i+j-a,a][i!=a!=j];'*int(input()));print(a)
+
+# Equivalently:
+N = int(input())
+a = 1
+i, j = map(int, input()[::2])
+for _ in range(N):
+    a = [i + j - a, a][i != a != j]
+
+print(a)
+
+```
+> 메모리 약 29MB, 시간 68ms
+
+1. 컵을 이동하는 횟수 `N`을 입력받는다.
+2. `a`를 1로 초기화
+3. `input().split()` 대신 `input()[::2]` : 한자리 숫자가 공백문자로 구분되어 있으므로.
+4. 컵을 이동할때마다 `i`와 `a`, `a`와 `j`가 다르다면 그대로 `a`, `a == i`이거나 `a == j`라면 `a = i + j - a`
+    - 무슨뜻인가?
+    - `a`는 처음에 1.
+    - `i`와 `a`, `a`와 `j`가 다르다면: 위치는 바뀌지 않는다.
+    - `a == i`이거나 `a == j`라면: `a`의 위치가 바뀌었다는 소리이므로
+        - `a == i`라면: `a = j`
+        - `a == j`라면: `a = i` 가 된다.
+
+
+[ktr040415님의 코드](https://www.acmicpc.net/source/53093792):
+```python 
+n='1'
+for _ in range(int(input())):
+ a,b=input().split()
+ if a==n:n=b
+ elif b==n:n=a
+print(n)
+
+# Equivalently:
+n = '1'
+for _ in range(int(input())):
+    a, b = input().split()
+    if a == n:
+        n = b
+    elif b == n:
+        n = a
+print(n)
+
+```
+> 메모리 약 30MB, 시간 36ms
+
+1. 옮기는 횟수만큼 반복문 돌리기
+2. 각 횟수마다 `a`, `b` 받기
+3. `a == n`라면 `n`은 `b`로 이동한다는 뜻
+4. `b == n`라면 `n`은 `a`로 이동한다
