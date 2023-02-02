@@ -35,3 +35,22 @@
 
  <p>첫째 줄에 구하고자 하는 단어를 출력하면 된다.</p>
 
+### 다른 코드 분석
+[joonion님의 코드](https://www.acmicpc.net/source/54726272):
+```python
+n=len(s:=input()[::-1])
+print(min(s[j:]+s[i:j]+s[:i]for i in range(1,n)for j in range(i+1,n)))
+
+# Equivalently:
+n = len(s := input()[::-1])
+print(min(s[j:] + s[i:j] + s[:i] for i in range(1, n) for j in range(i + 1, n)))
+
+```
+> 메모리 약 30MB, 시간 36ms
+
+모든 조합을 구해서 `min`을 구한다. 문자열 뒤집는 기술에 주목.  
+1. 문자열을 뒤집어서 시작. 길이를 구하고 `n`에 저장
+2. 1부터 `n - 1`까지의 `i`, `i + 1`부터 `n - 1`까지의 `j`에서 (`i`는 앞부분, `j`는 뒷부분)
+3. 먼저 뒤집어진 문자열 `s`의 맨 뒷부분에서 몇개를 떼서 앞에다 붙인다.
+4. 그리고 중간부분을 그 뒤에 연결하고, 앞부분을 맨 뒤에 붙인다.
+5. 그러면 각 부분을 뒤로 돌린것과 같다.
