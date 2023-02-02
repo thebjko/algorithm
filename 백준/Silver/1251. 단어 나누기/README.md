@@ -34,19 +34,4 @@
 ### 출력 
 
  <p>첫째 줄에 구하고자 하는 단어를 출력하면 된다.</p>
-
-### 다른 코드 분석
-[joonion님의 코드](https://www.acmicpc.net/source/54726272):
-```python
-n=len(s:=input()[::-1])
-print(min(s[j:]+s[i:j]+s[:i]for i in range(1,n)for j in range(i+1,n)))
-
-# Equivalently:
-n = len(s := input()[::-1])
-print(min(s[j:] + s[i:j] + s[:i] for i in range(1, n) for j in range(i + 1, n)))
-
-```
-> 메모리 약 30MB, 시간 36ms
-
-1. 문자열을 뒤집어서 시작. 길이를 구하고 `n`에 저장
-2. 1부터 `n - 1`까지의 `i`, `i + 1`부터 `n - 1`까지의 `j`
+ 
