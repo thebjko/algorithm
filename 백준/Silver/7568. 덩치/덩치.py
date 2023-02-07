@@ -16,9 +16,5 @@ for w, s in zip(adj_weight, adj_stature):
 
 for i in range(0, 2 * n, 2):
     w, s = ls[i] - min_weight, ls[i + 1] - min_stature
-    try:
-        rank = sum(map(lambda x: sum(x[w + 1:]), matrix[s + 1:]))
-    except:
-        rank = 1
-    
+    rank = sum(map(lambda x: sum(x[w + 1:]), matrix[s + 1:]))
     print(rank + 1, end=" ")
