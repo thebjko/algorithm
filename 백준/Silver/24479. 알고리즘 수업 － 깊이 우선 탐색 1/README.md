@@ -33,3 +33,118 @@
 ### 출력 
 
  <p>첫째 줄부터 <em>N</em>개의 줄에 정수를 한 개씩 출력한다. <em>i</em>번째 줄에는 정점 <em>i</em>의 방문 순서를 출력한다. 시작 정점의 방문 순서는 1이다. 시작 정점에서 방문할 수 없는 경우 0을 출력한다.</p>
+
+### 다른 코드 분석
+> 이번 문제는 메모리와 시간 측면에서 부하가 큰 문제인 것 같다.
+> 나는 딕셔너리에 노드와 방문순서를 저장하고 반복문으로 하나씩 호출했다.
+
+[free0122님의 코드](https://www.acmicpc.net/source/52523362):
+```python
+cnt = 0
+def solution():
+    import sys
+    sys.setrecursionlimit(10**6)
+
+    N, M, R = map(int, sys.stdin.readline().split())   # 노드, 간선, 시작정점
+    arr = [[] for i in range(N+1)]   # 0부터 N까지
+    visited = [False] * (N+1)   # 하나 더 많은 False를 담은 리스트. 노드 번호와 인덱스를 맞추기 위함
+    ans = ['0'] * (N)   # 출력할 실제 값이므로 N개
+
+    # 그래프 그리기
+    for i in sys.stdin.readlines():
+        u, v = map(int, i.split())
+        # 양방향 간선 그리기
+        arr[u].append(v)
+        arr[v].append(u)
+
+    # 자식 노드들 오름차순 정렬
+    for i in arr:
+        i.sort()
+
+    def dfs(x):
+        global cnt   # global 키워드 용례
+        cnt += 1
+        visited[x] = True   # 방문처리
+        ans[x-1] = str(cnt)
+        for i in arr[x]:
+            if visited[i] == False:
+                dfs(i)
+
+    dfs(R)
+    print('\n'.join(ans))
+
+solution()
+
+```
+> 메모리 약 74MB, 시간 508ms
+
+
+[thesage님의 코드](https://www.acmicpc.net/source/43899345):
+```python
+from sys import*
+setrecursionlimit(10**9)
+M,R=lambda:map(int,stdin.readline().split()),range
+def f(x):
+ v[x]=c[0];c[0]+=1
+ for e in g[x]:
+  if v[e]<1:f(e)
+n,m,r=M()
+v=[0]*(n+1)
+g=[[]for _ in R(n+1)]
+for _ in R(m):a,b=M();g[a]+=[b];g[b]+=[a]
+for i in R(n):g[i].sort()
+c=[1]
+f(r)
+for e in v[1:]:print(e)
+
+# Equivalently:
+from sys import*
+setrecursionlimit(10**9)
+
+M, R = lambda: map(int, stdin.readline().split()), range
+"""
+>>> M
+<function <lambda> at ... >   # lambda를 할당할 수도 있다.
+>>> R
+<class 'range'>
+코드를 줄이기 위해 발휘한 창의력...
+"""
+
+c = [1]
+def f(x: int) -> None:
+    """
+    각 노드(정수형)를 받으면 v[x]에 c[0]를 할당한다.
+    c[0]을 1씩 증가한다.
+    노드 x의 자식 노드들(e)을 순회하면서
+    방문되지 않았으면 (v[e] < 1) 해당 노드에 대해 위 과정들을 반복한다(재귀).
+    """
+    v[x] = c[0]
+    c[0] += 1
+    for e in g[x]:
+        if v[e] < 1:
+            f(e)
+
+n, m, r = M()
+v = [0] * (n + 1)   # 출력될 리스트
+g = [[] for _ in R(n + 1)]
+
+# 그래프 그리기
+for _ in R(m):
+    # 양방향 간선
+    a, b = M()
+    g[a] += [b]
+    g[b] += [a]
+
+# 각 노드의 자식 노드들 정렬하기
+for i in R(n):
+    g[i].sort()
+
+f(r)
+for e in v[1:]:
+    print(e)
+
+
+```
+> 메모리 약 159MB, 시간 732ms
+
+1. 함수 내의 변수는 출력 되는 시점에 변수들이 선언되어 있으면 사용할 수 있는 것 같다.
