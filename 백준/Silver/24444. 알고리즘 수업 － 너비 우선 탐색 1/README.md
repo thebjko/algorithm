@@ -43,3 +43,46 @@
 
  <p>첫째 줄부터 <em>N</em>개의 줄에 정수를 한 개씩 출력한다. <em>i</em>번째 줄에는 정점 <em>i</em>의 방문 순서를 출력한다. 시작 정점의 방문 순서는 1이다. 시작 정점에서 방문할 수 없는 경우 0을 출력한다.</p>
 
+### 다른 코드 분석
+[ryol8888님의 코드](https://www.acmicpc.net/source/55276981):
+```python
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+def bfs(graph, visit_node, V):
+    count = 1
+    visit_node[V] = count
+    count += 1
+    queue = deque([V])
+    while queue:
+        U = queue.popleft()
+        graph[U].sort()
+        for N in graph[U]:
+            if visit_node[N] == 0:
+                visit_node[N] = count
+                count += 1
+                queue.append(N)
+    
+def solution():
+    N, M, R = map(int, input().split(" "))
+    graph = [[] for _ in range(N+1)]
+    
+    # 양방향 간선 그리기
+    for _ in range(M):
+        U, V = map(int, input().split(" "))
+        graph[U].append(V)
+        graph[V].append(U)
+    
+    # 방문 기록할 리스트
+    visit_node = [0] * (len(graph)+1)
+    bfs(graph, visit_node, R)
+    for i in range(1, N+1):
+        print(visit_node[i])
+        
+solution()
+
+```
+> 메모리 약 59MB, 시간 412ms
+
+방문 기록할 리스트를 마련한 뒤, 해당 인덱스 값을 갖는 노드가 queue에 append될 때마다 카운트 값을 방문 기록 리스트에 저장 후 변수 증가
