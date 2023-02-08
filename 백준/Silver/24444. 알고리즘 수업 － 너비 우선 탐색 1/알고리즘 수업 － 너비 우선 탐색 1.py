@@ -2,41 +2,40 @@ import sys
 from collections import deque
 
 input = sys.stdin.readline
+sys.setrecursionlimit(10**6)
 
-class Graph:
-    def __init__(self) -> None:
-        self.vertices: dict[int, set[int]] = {}
-        self.cnt: int = 1
+N, M, R = map(int, input().split())
+ls = [[] for _ in range(N+1)]
+visited = [False] * (N+1)
+ans = ['0'] * (N)
+
+for _ in range(M):
+    a, b = map(int, input().split())
+    ls[a].append(b)
+    ls[b].append(a)   
+
+for i in ls:
+    i.sort()
+
+cnt = 0
+q: deque = deque([R])
+def bfs(q: deque) -> None:
+    global cnt
     
-    def add_edge(self, from_vertex: int, to_vertex: int) -> None:
-        if from_vertex in self.vertices:
-            self.vertices[from_vertex].add(to_vertex)
-        else:
-            self.vertices[from_vertex] = set((to_vertex, ))
+    if not q:
+        return
 
-    def bfs(self, start_vertex: int) -> dict[int, int]:
-        queue: deque = deque()
-        visited = dict([(start_vertex, self.cnt)])
-        queue.append(start_vertex)
-        while queue:
-            vertex = queue.popleft()
-            for adj in sorted(self.vertices.get(vertex, set())):
-                if adj not in visited:
-                    self.cnt += 1
-                    visited.update([(adj, self.cnt)])
-                    queue.append(adj)
-        return visited
+    v = q.popleft()
+    if ans[v - 1] == "0":
+        cnt += 1
+        ans[v - 1] = str(cnt)
+    
+    for u in ls[v]:
+        if not visited[u]:        
+            visited[u] = True
+            q.append(u)
 
-if __name__ == '__main__':
-    g = Graph()
+    bfs(q)
 
-    n, m, r = map(int, input().split())
-    for _ in range(m):
-        a, b = map(int, input().split())
-        g.add_edge(a, b)
-        g.add_edge(b, a)
-
-    d = g.bfs(r)
-
-    for i in range(n):
-        print(d.get(i + 1, 0))
+bfs(q)
+print("\n".join(ans))
