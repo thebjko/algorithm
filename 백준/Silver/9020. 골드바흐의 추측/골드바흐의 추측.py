@@ -25,18 +25,19 @@ def search(prime_list: list[int], n: int) -> int:
 
     return m
 
-for n in ls:
-    prime_list = prime(n)
-    n //= 2
+prime_list = prime(10_000)
+prime_set = set(prime_list)
 
-    if n in (s := set(prime_list)):
+for n in ls:
+    n //= 2
+    if n in prime_set:
         print(f"{n} " * 2)
     
     else:
         m = search(prime_list, n)
         n *= 2
         while True:
-            if (k := n - prime_list[m]) in s:
+            if (k := n - prime_list[m]) in prime_set:
                 print(*sorted([k, prime_list[m]]))
                 break
             else:
