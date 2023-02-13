@@ -13,7 +13,6 @@ def dfs(x, y):
             a, b = x + dx, y + dy
             if 0<=a<M and 0<=b<N:
                 dfs(a, b)
-        return True
 
 for _ in range(T):
     M, N, K = map(int, input().split())
@@ -27,7 +26,9 @@ for _ in range(T):
     cnt = 0
     for i in range(M):
         for j in range(N):
-            if dfs(i, j):
+            if field[j][i]:
+                dfs(i, j)
                 cnt += 1
+
 
     print(cnt)
