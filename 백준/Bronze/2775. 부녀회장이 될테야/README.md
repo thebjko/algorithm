@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 32540 KB, 시간: 40 ms
+메모리: 31256 KB, 시간: 40 ms
 
 ### 분류
 
@@ -26,51 +26,3 @@
 
  <p>각각의 Test case에 대해서 해당 집에 거주민 수를 출력하라.</p>
 
-### Note
-뿌듯하다. 8전 9기.  
-규칙을 발견해서 풀었다.  
-아래는 다른 방법을 기록해둔다.
-```python
-# 재귀함수를 사용한 방법
-_, *a = map(int, open("input.txt").read().split())
-
-def num_inhabitants(k: int, n: int) -> int:    
-    inhabitants = 0
-
-    if k == 0:
-        return n
-
-    for i in range(1, n + 1):
-        inhabitants += num_inhabitants(k - 1, i)
-    
-    return inhabitants
-
-for i, j in zip(a[::2], a[1::2]):
-    print(num_inhabitants(i, j))
-
-```
-정답 코드와 같은 값을 출력하지만 느려서 시간 초과가 뜬다.
-
-### 숏코딩 분석
-```python
-# original:
-import math
-i=input
-for n in[int]*int(i()):k=n(i());print(math.comb(k+n(i()),k+1))
-
-# equivalent to:
-import math
-
-T = int(input())
-for n in [int] * T:   # [int]는 뭐지?
-    k = n(input())   # n이 이 줄의 input()값을 정수형으로 변환해준다.
-
-    # comb 함수가 있었어.. factorial을 대신할 수 있었다.
-    print(math.comb(k + n(input()), k + 1))   # 왜 comb(k + n, k + 1)인가?
-    # factorial(k + n)/(factorial(k + 1)*factorial(n - 1))
-    # 여기서 k + n 은 파스칼의 삼각형을 확장시켜서 n 차 더 올라가는 것이고
-    # (예를 들어 4층 4호 -> 8차, 4층 1호 -> 5차)
-    # k + 1 은 k + n 차의 이항계수에서 k + 1번째의 숫자를 선택하게 한다.
-    # n - 1 이어도 된다. (식에서 볼 수 있듯) 같은 값을 준다.
-
-```
