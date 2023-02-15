@@ -12,7 +12,7 @@ adj_weight = map(lambda x: x - min_weight, weight)
 adj_stature = map(lambda x: x - min_stature, stature)
 
 for w, s in zip(adj_weight, adj_stature):
-    matrix[s][w] = 1
+    matrix[s][w] += 1
 
 for i in range(0, 2 * n, 2):
     w, s = ls[i] - min_weight, ls[i + 1] - min_stature
