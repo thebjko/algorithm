@@ -7,9 +7,10 @@ for start, dest in zip(ls[::2], ls[1::2]):
     snl[start].append(dest)
 
 def get_destination(start: int) -> int:
-    if not snl[start]:
-        return start
-    return get_destination(*snl[start])
+    result = start
+    while (r := snl[result]):
+        result = r[0]
+    return result
 
 graph = []
 for i in range(101):
