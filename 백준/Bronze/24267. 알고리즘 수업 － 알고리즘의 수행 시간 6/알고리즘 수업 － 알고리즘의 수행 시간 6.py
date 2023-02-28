@@ -1,3 +1,1 @@
-x = int(input())
-from math import comb
-print(comb(x, 3), 3)
+from math import *;print(comb(int(input()),3),3)
