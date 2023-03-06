@@ -41,3 +41,16 @@ otherwise it returns:
 
  <p>입력으로 주어진 각각의 a, b, c에 대해서, w(a, b, c)를 출력한다.</p>
 
+### 숏코딩 분석
+```python
+from functools import*
+w = cache(
+	lambda a, b, c : 1 > min(a, b, c) or (max(a, b, c) > 20) << 20 
+    or -(a < b < c) & w(a, b, c-1) + w(a, b-1, c-1) - w(a, b-1, c)
+    or w(a:=a-1, b, c) + w(a, b-1, c) + w(a, b, c-1) - w(a, b-1, c-1)
+)
+
+for i in[*open(0)][:-1]:
+	j = *map(int, i.split()),;print(f"w{j} =", +w(*j))
+
+```
