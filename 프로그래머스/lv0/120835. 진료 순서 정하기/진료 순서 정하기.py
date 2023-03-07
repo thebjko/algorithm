@@ -3,6 +3,6 @@ def solution(emergency: list):
     answer = [1] * l
     for i in range(l):
         for j in range(l):
-            if emergency[i] < emergency[j]:
+            if answer[i] < answer[j]:
                 answer[i] += 1
     return answer
