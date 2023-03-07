@@ -120,7 +120,7 @@
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges
 
-# 코드 분석
+# [코드 분석](https://school.programmers.co.kr/learn/courses/30/lessons/42583/solution_groups?language=python3)
 
 ```python
 import collections
