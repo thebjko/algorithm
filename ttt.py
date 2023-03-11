@@ -73,42 +73,37 @@ def mine(board):
 
     return 1
 
-def isWin(board, x, y):
-    leftY, rightY = (y - 1) % 3, (y + 1) % 3
-    if board[x][y] == board[x][leftY] == board[x][rightY]:
-        return True
 
-    upX, downX = (x - 1) % 3, (x + 1) % 3
-    if board[x][y] == board[upX][y] == board[downX][y]:
-        return True
+# Jacky Chai Chen Long 님의 코드
+# Check if there is a winning row, column, or diagonal
+def check_win(player, board):
+    # Check rows
+    for i in range(3):
+        if all(cell == player for cell in board[i]):
+            return True
 
-    if (board[x][y] == board[upX][leftY] == board[downX][rightY]) or (board[x][y] == board[upX][rightY] == board[downX][leftY]):
+    # Check columns
+    for j in range(3):
+        if all(board[i][j] == player for i in range(3)):
+            return True
+
+    # Check diagonals
+    if all(board[i][i] == player for i in range(3)):
+        return True
+    if all(board[i][2-i] == player for i in range(3)):
         return True
 
     return False
 
-# 출처 : https://yuni0822.tistory.com/334
-def yuni(board):
-    n = len(board)
+def solution(board):
+    num_x = sum(row.count('X') for row in board)
+    num_o = sum(row.count('O') for row in board)
 
-    oList, xList = [], []
-    for x in range(n):
-        for y in range(n):
-            if board[x][y] == 'O':
-                oList.append((x, y))
-            elif board[x][y] == 'X':
-                xList.append((x, y))
-
-    if len(oList) < len(xList) or len(oList) >= (len(xList) + 2):
+    if num_x - num_o > 0 or abs(num_x - num_o) > 1:
         return 0
 
-    for x, y in oList:
-        if isWin(board, x, y) and len(xList) != (len(oList) - 1):
-            return 0
-
-    for x, y in xList:
-        if isWin(board, x, y) and len(xList) != len(oList):
-            return 0
+    elif (check_win('O', board) and num_x != num_o - 1) or (check_win('X', board) and num_x != num_o):
+        return 0
 
     return 1
 
@@ -125,13 +120,7 @@ if __name__ == '__main__':
 
     for i in boards:
         m = mine(i)
-        y = yuni(i)
+        y = solution(i)
         if m^y:
             print(f'mine {m}, yuni {y}')
             pprint(i)
-        # if mine(i) and not yuni(i):
-        #     print('mine 1, yuni 0')
-        #     pprint(i)
-        # if not mine(i) and yuni(i):
-        #     print('mine 0, yuni 1')
-        #     pprint(i)
