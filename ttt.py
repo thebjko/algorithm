@@ -124,9 +124,14 @@ if __name__ == '__main__':
             print(i)
 
     for i in boards:
-        if mine(i) and not yuni(i):
-            print('mine 1, yuni 0')
+        m = mine(i)
+        y = yuni(i)
+        if m^y:
+            print(f'mine {m}, yuni {y}')
             pprint(i)
-        if not mine(i) and yuni(i):
-            print('mine 0, yuni 1')
-            pprint(i)
+        # if mine(i) and not yuni(i):
+        #     print('mine 1, yuni 0')
+        #     pprint(i)
+        # if not mine(i) and yuni(i):
+        #     print('mine 0, yuni 1')
+        #     pprint(i)
