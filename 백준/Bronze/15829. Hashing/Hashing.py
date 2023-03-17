@@ -1,0 +1,1 @@
+print(sum(a*31**i for i,a in enumerate(map(lambda x: ord(x)-96,[*open(0)][1].rstrip())))%1234567891)
