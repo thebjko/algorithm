@@ -1,0 +1,30 @@
+# [kkwon920 님의 코드 :](https://www.acmicpc.net/source/53646541)
+```python
+from sys import stdin,stdout
+
+input = stdin.readline
+print = stdout.write
+
+q = []
+
+for _ in range(int(input())):
+  cmd=input().rstrip()
+  
+  if cmd=="pop":
+    print(q.pop(0)+"\n") if q else print("-1\n")
+  elif cmd=="size":
+    print(str(len(q))+"\n")
+  elif cmd=="empty":
+    print("0\n" if q else "1\n")
+  elif cmd=="front":
+    print(q[0]+"\n") if q else print("-1\n")
+  elif cmd=="back":
+    print(q[-1]+"\n") if q else print("-1\n")
+  else:
+    q.append(cmd.split()[1])
+```
+> 메모리 약 31MB, 시간 40ms
+
+1. 입출력이 많을 경우 sys 모듈의 stdin과 stdout을 사용해 성능을 개선시킬 수 있다.
+
+[내 코드 :](../백준/Silver/10845. 큐)
