@@ -1,0 +1,27 @@
+# [ljyooooo 님의 코드 :](https://www.acmicpc.net/source/53358654)
+```python
+n, k = map(int, input().split())
+
+a = 1
+b = 1
+
+for i in range(n, n-k, -1):
+    a *= i
+
+for j in range(1, k+1):
+    b *= j
+
+print(a//b)
+```
+## Things to Note
+1. `n!/k!/(n-k)!`을 구현한 방식
+    - `b`는 `k!`.
+    - 그렇다면 `a`는 `n!/(n-k)!`일 것이다.
+        - `n-k`에서부터 `n`까지를 곱했다.
+
+# [himyu 님의 코드 :](https://www.acmicpc.net/source/26494423)
+```python
+print(__import__('math').comb(*map(int,input().split())))
+```
+## Things to Note
+1. `import` 하는 방법
