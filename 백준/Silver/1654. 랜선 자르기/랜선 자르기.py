@@ -2,7 +2,7 @@ K, N, *ls = map(int, open(0).read().split())
 
 l, r = 1, max(ls)
 f = lambda x: x//d
-d, result = 0, 0
+result = 0
 while l <= r:
     d = (l + r) // 2
     s = sum(map(f, ls))
