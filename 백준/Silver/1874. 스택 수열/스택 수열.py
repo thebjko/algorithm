@@ -1,25 +1,26 @@
 n, *ls = map(int, open(0).read().split())
 stack = [0]
-result = ''
+result = []
 
-n = [*range(n, 0, -1)]
+k = 1
 for i in ls:
     while stack[-1] < i:
-        if not n:
+        if k > n:
             print('NO')
             exit()
-        stack.append(n.pop())
-        result += '+ '
+        stack.append(k)
+        k += 1
+        result.append('+')
     
     while stack[-1] > i:
         if stack[-1] == 0:
             print('NO')
             exit()
         stack.pop()
-        result += '- '
+        result.append('-')
     
     if stack[-1] == i:
         stack.pop()
-        result += '- '
+        result.append('-')
     
-print(result)
+print(' '.join(result))
