@@ -39,6 +39,36 @@ print(lst[-N])
 
 그 이후부터는 내림차순으로 정렬 된 리스트를 슬라이싱하는데, 위에서 도출된 원리에 따라 각 줄에 $가능한 개수 * 남은 줄 수 = N$가 되도록 슬라이싱한다.
 
+### 잘 이해했는지 확인해보기
+```python
+import sys
+
+input = sys.stdin.readline
+
+N = int(input())
+
+ls = []
+for idx in range(N):
+    ls += sorted(map(int, input().split()), reverse=True)[:N//(N-idx)]
+
+print(sorted(ls)[-N])
+```
+> 메모리 약 31MB, 시간 788ms
+
+이해한 바를 토대로 다시 만들어봤다. 처음 반개 줄을 정렬하느라 시간이 조금 소요되긴 했지만 원리를 제대로 적용했다.
+
+## [joonion 님의 코드 :](https://www.acmicpc.net/source/52615099)
+```python
+n = int(input())
+a = []
+for _ in [0] * n:
+    a = sorted(a + [*map(int, input().split())])[-n:]
+
+print(a[0])
+```
+> 메모리 약 31MB, 시간 936ms
+
+매번 더하며 정렬해 N개를 추리는 코드.
 
 ## 내 코드
 ```python
