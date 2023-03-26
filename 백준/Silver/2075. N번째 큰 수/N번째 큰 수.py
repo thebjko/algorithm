@@ -1,14 +1,12 @@
 import sys
-from heapq import *
 
-input = sys.stdin.readline
-N = int(input())
-heap = []
-for _ in range(N):
-    for i in map(int, input().split()):
-        heappush(heap, i)
-    
-    while len(heap) > N:
-        heappop(heap)
+N = int(sys.stdin.readline().rstrip())
+lst = []
+for i in range((N // 2)):
+    lst.append(max(map(int, sys.stdin.readline().rstrip().split())))
+for i in range((N // 2), N - 1):
+    lst += sorted(list(map(int, sys.stdin.readline().rstrip().split())), reverse=True)[:(N + 1) // (N - i) + 1]
+lst += list(map(int, sys.stdin.readline().rstrip().split()))
 
-print(heappop(heap))
+lst.sort()
+print(lst[-N])
