@@ -104,4 +104,4 @@ print('\n'.join(' '.join('0' if isinf(val) else str(val) for val in i[1:]) for i
 ```
 > 메모리 약 40 MB, 시간 408 ms
 
-확실히 시간이 줄어들었으나 여전히 멀었다. INF와 입력방식의 차이를 살펴보자 inf를 `sys.maxsize`로 고치니 시간이 400ms로 아주 약간 줄었고 `input = sys.stdin` 사용시 392ms로 아주 미미한 차이밖에 없었다. 
+확실히 시간이 줄어들었으나 여전히 멀었다. INF와 입력방식의 차이를 살펴보자 inf를 `sys.maxsize`로 고치니 시간이 400ms로 아주 약간 줄었고 `input = sys.stdin` 사용시 392ms로 아주 미미한 차이밖에 없었다. 둘 다 적용해도 372ms까지밖에 안 줄었다.
