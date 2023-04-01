@@ -1,25 +1,39 @@
 import sys
+from heapq import *
+
 input = sys.stdin.readline
 
-v, e = map(int, input().split())
-road = [[int(1e9) for i in range(v)] for j in range(v)]
-result = int(1e9)
+V, E = map(int, input().split())
 
-for i in range(v):
-    road[i][i] = 0
-
-for i in range(e):
+distances = [[float('inf')] * (V+1) for _ in range(V+1)]
+graph = [[] for _ in range(V+1)]
+for _ in range(E):
     a, b, c = map(int, input().split())
-    road[a - 1][b - 1] = c
+    graph[a].append((b, c))
 
-for i in range(v):
-    for j in range(v):
-        for k in range(v):
-            road[j][k] = min(road[j][k], road[j][i] + road[i][k])
 
-for i in range(v):
-    for j in range(v):
-        if i != j and road[i][j] != int(1e9) and road[j][j] != int(1e9):
-            result = min(result, road[i][j] + road[j][i])
+def d():
+    q = []
+    for u in range(1, V+1):
+        for v, cost in graph[u]:
+            heappush(q, (cost, u, v))
+            distances[u][v] = cost
 
-print(result if result != int(1e9) else -1)
+    while q:
+        cost, u, v = heappop(q)
+        if v == u:
+            exit(print(cost))
+        if cost < distances[u][v]:   # 같으면 이미 방문해했다는 뜻
+            distances[u][v] = cost
+        for next_node, cost_to_next in graph[v]:
+            total_cost = cost + cost_to_next
+            if total_cost < distances[u][next_node]:    # 같으면 넘어가도된다. 이미 방문했다는 뜻.
+                heappush(q, (total_cost, u, next_node))
+                # distances[u][next_node] = total_cost   # 왜? 가장 짧은 거리인지 확인해야 하지 않나?
+                                                       # 현재노드까지 가장 짧은 거리로 도착했으니
+                                                       # 현재노드에서 다음 노드로 가는게 가장 짧다?
+                                                       # 그게 아니라 더 짧은 거리가 있으면 갱신될 것
+    
+    print(-1)
+    
+d()
