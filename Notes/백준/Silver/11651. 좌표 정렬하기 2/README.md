@@ -21,7 +21,7 @@ print(''.join(dots))
 ## 내 코드:
 ```python
 from operator import itemgetter
-_, *ls = map(int, open('input.txt').read().split())
+_, *ls = map(int, open(0).read().split())
 for i in sorted(sorted(zip(ls[::2], ls[1::2]), key=itemgetter(0)), key=itemgetter(1)):
     print(*i)
 ```
