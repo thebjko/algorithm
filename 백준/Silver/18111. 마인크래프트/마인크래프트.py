@@ -2,19 +2,20 @@ from collections import Counter
 
 _, _, B, *ls = map(int, open(0).read().split())
 
+
 radix = Counter(ls)
 
-def f(case: int, inventory: int, time: int = 0):
+def f(case: int):
+    inventory, time = B, 0
     for height, count in radix.items():
-        x = count * abs(height - case)
-        if not x:
+        if height == case:
             continue
+        x = count * (height-case)
+        inventory += x
         if height > case:
-            inventory += x
             time += x*2
         elif height < case:
-            inventory -= x
-            time += x
+            time -= x
 
     if inventory < 0:
         return float('inf')
@@ -24,7 +25,7 @@ def f(case: int, inventory: int, time: int = 0):
 
 time, c = float('inf'), 0
 for tc in range(min(radix), max(radix)+1):
-    t = f(tc, B)
+    t = f(tc)
     if t <= time:
         time = t
         c = tc
