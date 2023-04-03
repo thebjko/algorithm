@@ -1,0 +1,6 @@
+a,*ls=open(0)
+n,_=map(int,a.split())
+s = set(i.rstrip() for i in ls[:n])
+t = set(i.rstrip() for i in ls[n:])
+print(len(u:=s.intersection(t)))
+print(*sorted(u))
