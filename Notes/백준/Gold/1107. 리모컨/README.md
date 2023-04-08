@@ -102,6 +102,21 @@ else:
 
 제출하고 답이 체크되는 동안 이런 성능은 어떻게 나올 수 있는지 정말 궁금해졌다.
 
+## [joonion 님의 코드 :](https://www.acmicpc.net/source/52676155)
+```python
+n, m, *a = open(0).read().split()
+n = int(n)
+a = {*a}
+x = abs(n-100)
+for c in range(n+x):
+    if not {*str(c)} & a:
+        x = min(x, abs(n-c)+len(str(c)))
+print(x)
+```
+> 메모리 약 31MB 시간 968ms
+
+
+
 ## 내 코드 :
 ```python
 from heapq import *
