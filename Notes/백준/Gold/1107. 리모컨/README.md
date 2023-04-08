@@ -17,7 +17,7 @@ import sys
 
 
 def get_score(candidate: int):
-    '''자리수(버튼 누르는 횟수) + 후보에서 N까지 이동하는데 필요한 +,- 버튼 누르는 횟수'''
+    '''자리수(버튼 누르는 횟수) + 후보에서 N까지 이동하는데 필요한 +, - 버튼 누르는 횟수'''
     digits_count = len(str(candidate))
     return digits_count + abs(N - candidate)
 
