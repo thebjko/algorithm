@@ -132,3 +132,10 @@ while heap:
         break
     heappush(heap, (cost + abs(cur-100), 100))
 ```
+
+
+# 반례모음
+1. https://www.acmicpc.net/board/view/46120
+2. https://www.acmicpc.net/board/view/69884
+3. https://www.acmicpc.net/board/view/107529
+4. https://www.acmicpc.net/board/view/31853
