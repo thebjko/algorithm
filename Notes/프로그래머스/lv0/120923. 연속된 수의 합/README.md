@@ -14,4 +14,5 @@ def solution(num, total):
 ```
 1. `total` : `(x+0) + (x+1) + (x+2) + ... + (x+num-1)`
 2. `total`에서 1부터 `num-1`까지 더한 값을 빼면 `x*num`이 된다(`x`가 `num`개 있는 배열의 합).
+    - 1부터 num까지 더한 값은 `num*(num+1)//2`이고 여기에 num을 빼면 `num*(num-1)//2`이다.
 3. 각 값에 0, 1, ... , num-1을 다시 더하면(`+ i for i in range(num)`) 답을 구할 수 있다.
