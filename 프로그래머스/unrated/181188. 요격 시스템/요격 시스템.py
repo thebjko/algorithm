@@ -7,7 +7,7 @@ def solution(targets):
     targets.sort()
     q = deque(targets)
 
-    def f(q: deque, mark: int = 0, threshold: int = 0, answer: int = 0) -> int:
+    def f(q: deque, mark: int = 0, answer: int = 0) -> int:
         if not q:
             return answer
         e = mark
@@ -17,6 +17,6 @@ def solution(targets):
                 answer += 1
                 e = y
             elif y <= e:
-                return f(q, y, e, answer)
+                return f(q, y, answer)
         return answer
     return f(q)
