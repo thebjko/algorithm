@@ -64,7 +64,6 @@ def solve():
     parent = [i for i in range(n)]
 
     def root(v):
-        # 최종 parent를 리턴하지 않음
         while v != parent[v]:
             v = parent[v]
         return v
