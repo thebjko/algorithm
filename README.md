@@ -33,6 +33,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Create target directory if it doesn't exist
       run: |
