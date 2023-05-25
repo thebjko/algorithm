@@ -1,4 +1,76 @@
-# 깃허브 커맨드를 활용한 백준허브 워크플로우
+# 깃허브 액션을 활용한 백준허브 워크플로우
+
+<br>
+
+## 요약
+`.github/workflows` 디렉토리에 아래 yaml 파일을 작성해 푸시하고 사용하면 된다. 이후 Notes 디렉토리에 자동으로 복사된 README.md 파일에 학습한 내용 기록.
+
+<br>
+
+## Motivation:
+깃허브 `rebase -i` 커맨드와 `cherry-pick`으로 매번 다른 브랜치에서 변경 내용을 불러오는 방식으로 작업을 진행하다 보니, 에러도 잦고, 따라서 조심히 다뤄야 했고, 또 손이 많이 갔다. 그래서 그냥 Notes 디렉토리에 Push된 README.md 파일들을 복사해 수정하고 커밋/푸시하는 방식으로 진행했다. 
+
+그러다 Github Actions에 대해 알게 되었고, 활용해 위 작업을 자동화했다.
+
+<br>
+
+## Github Actions
+1. 저장소 베이스 디렉토리에 `.github/workflows` 라는 디렉토리를 만든다. 반드시 똑같은 이름이어야 한다.
+2. 위 디렉토리 내에 yml 또는 yaml 확장자를 가진 파일을 만든다. 필자의 경우 `make_notes.yml`.
+3. 아래 코드 내용을 붙여넣는다.
+```yaml
+name: Make Note Files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  copy_files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Create target directory if it doesn't exist
+      run: |
+        if [ ! -d "Notes" ]; then
+          mkdir Notes
+        fi
+
+    - name: Copy README.md files
+      run: |
+        for file in $(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^.+\/README\.md$'); do
+          if [ ! -f "Notes/$file" ]; then
+            mkdir -p "$(dirname "Notes/$file")"
+            cp "$file" "Notes/$file"
+          fi
+        done
+
+    - name: Commit and push if changes
+      run: |
+        git add Notes/*
+        if [ -n "$(git status --porcelain)" ]; then
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update README.md files in Notes [ci skip]"
+          git push origin main
+        fi
+```
+4. push해 원격 저장소에 반영한다.
+
+이제 백준허브에서 push 되는 README.md 파일들이 Notes 디렉토리에 복사될 것이다.  
+베이스 디렉토리에 있는 README.md 파일은 복사되지 않는다.
+
+출처: [ChatGPT](https://chat.openai.com/share/3cef9ae7-6a1c-490a-9fcb-5971d9647b2a)
+
+<br>
+
+---
+
+# [Legacy] 깃허브 커맨드를 활용한 백준허브 워크플로우
 > 부제: 백준허브로 코딩공부하는 방법
 
 ## 요약
