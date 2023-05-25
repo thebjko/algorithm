@@ -22,8 +22,8 @@ jobs:
     - name: Copy README.md files
       run: |
         for file in $(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^.*\/README\.md$'); do
-          if [ ! -f "markdown_files/$file" ]; then
-            mkdir -p "$(dirname "markdown_files/$file")"
-            cp "$file" "markdown_files/$file"
+          if [ ! -f "Notes/$file" ]; then
+            mkdir -p "$(dirname "Notes/$file")"
+            cp "$file" "Notes/$file"
           fi
         done
