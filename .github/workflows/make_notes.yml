@@ -13,6 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - name: Configure Git
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
     - name: Create target directory if it doesn't exist
       run: |
         if [ ! -d "Notes" ]; then
@@ -27,3 +32,11 @@ jobs:
             cp "$file" "Notes/$file"
           fi
         done
+    
+    - name: Commit and push changes
+      run: |
+        git add Notes/*
+        if [ -n "$(git status --porcelain Notes/*)" ]; then
+          git commit -m "add: update notes [ci skip]"
+          git push origin main
+        fi
