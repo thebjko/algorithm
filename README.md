@@ -66,7 +66,7 @@ jobs:
 이제 백준허브에서 push 되는 README.md 파일들이 Notes 디렉토리에 복사될 것이다.  
 베이스 디렉토리에 있는 README.md 파일은 복사되지 않는다.
 
-출처: [ChatGPT](https://chat.openai.com/share/3cef9ae7-6a1c-490a-9fcb-5971d9647b2a)
+출처: ChatGPT
 
 <br>
 
